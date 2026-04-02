@@ -1,0 +1,146 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-cinzel: 'Cinzel', serif;
+  --font-lato:   'Lato', sans-serif;
+  --gold:        #D4AF37;
+  --gold-light:  #F5D76E;
+  --gold-dark:   #A07C10;
+  --crimson:     #8B0000;
+  --bg-dark:     #0A0A0F;
+  --bg-card:     #12121A;
+  --bg-mid:      #1A1A28;
+  --bg-section:  #0F0F18;
+  --text-white:  #F0EAD6;
+  --text-muted:  #9A8F7A;
+  --border:      rgba(212,175,55,0.25);
+  --shadow-gold: 0 0 30px rgba(212,175,55,0.15);
+}
+
+@layer base {
+  html { scroll-behavior: smooth; }
+
+  body {
+    background-color: var(--bg-dark);
+    color: var(--text-white);
+    font-family: var(--font-lato);
+    overflow-x: hidden;
+  }
+
+  h1,h2,h3,h4,h5,h6 {
+    font-family: var(--font-cinzel);
+    line-height: 1.25;
+    letter-spacing: 0.03em;
+  }
+}
+
+@layer components {
+  /* ── BUTTONS ── */
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-6 py-3 rounded-lg font-semibold
+           text-sm tracking-wide cursor-pointer transition-all duration-300
+           bg-gradient-to-r from-[#A07C10] via-[#D4AF37] to-[#F5D76E]
+           text-[#0A0A0F] shadow-lg hover:-translate-y-0.5;
+    font-family: var(--font-cinzel);
+    box-shadow: 0 4px 20px rgba(212,175,55,0.35);
+  }
+  .btn-primary:hover { box-shadow: 0 8px 30px rgba(212,175,55,0.5); }
+
+  .btn-outline {
+    @apply inline-flex items-center gap-2 px-6 py-3 rounded-lg font-semibold
+           text-sm tracking-wide cursor-pointer transition-all duration-300
+           bg-transparent border border-[#D4AF37] text-[#D4AF37]
+           hover:bg-[rgba(212,175,55,0.1)] hover:text-[#F5D76E];
+    font-family: var(--font-cinzel);
+  }
+
+  /* ── CARDS ── */
+  .casino-card {
+    @apply relative overflow-hidden rounded-2xl border transition-all duration-300;
+    background: var(--bg-card);
+    border-color: var(--border);
+  }
+  .casino-card::before {
+    content: '';
+    @apply absolute top-0 left-0 right-0 h-0.5 opacity-0 transition-opacity duration-300;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+  .casino-card:hover {
+    @apply -translate-y-1.5;
+    border-color: rgba(212,175,55,0.5);
+    box-shadow: var(--shadow-gold);
+  }
+  .casino-card:hover::before { @apply opacity-100; }
+
+  /* ── SECTION LABEL ── */
+  .section-label {
+    @apply inline-block text-xs font-bold tracking-[0.2em] uppercase
+           px-4 py-1.5 rounded-full border mb-4;
+    color: var(--gold-dark);
+    border-color: var(--border);
+    font-family: var(--font-lato);
+  }
+
+  /* ── GOLD DIVIDER ── */
+  .gold-divider {
+    @apply w-20 h-0.5 mx-auto mt-3 rounded;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+
+  /* ── BADGE ── */
+  .badge-gold {
+    @apply inline-block px-3 py-0.5 rounded-full text-xs font-bold tracking-wide border;
+    background: rgba(212,175,55,0.15);
+    color: var(--gold);
+    border-color: rgba(212,175,55,0.3);
+  }
+  .badge-green {
+    @apply inline-block px-3 py-0.5 rounded-full text-xs font-bold border;
+    background: rgba(39,174,96,0.15);
+    color: #2ECC71;
+    border-color: rgba(39,174,96,0.3);
+  }
+  .badge-red {
+    @apply inline-block px-3 py-0.5 rounded-full text-xs font-bold border;
+    background: rgba(139,0,0,0.2);
+    color: #E74C3C;
+    border-color: rgba(192,57,43,0.4);
+  }
+
+  /* ── NOTICE BAR ── */
+  .notice-bar {
+    @apply text-center py-2 text-xs border-b;
+    background: rgba(212,175,55,0.06);
+    border-color: var(--border);
+    color: var(--text-muted);
+  }
+
+  /* ── PAGE HERO ── */
+  .page-hero {
+    @apply text-center border-b;
+    padding: 6rem 0 3rem;
+    background: radial-gradient(ellipse at 50% 0%, rgba(212,175,55,0.08) 0%, transparent 60%),
+                linear-gradient(180deg,#0F0F18,#0A0A0F);
+    border-color: var(--border);
+  }
+
+  /* ── PROSE CONTENT ── */
+  .prose-casino h2 { color: var(--gold); @apply text-2xl mt-10 mb-3; }
+  .prose-casino h3 { color: var(--text-white); @apply text-xl mt-8 mb-2; }
+  .prose-casino h4 { color: var(--gold-light); @apply text-base mt-6 mb-1; }
+  .prose-casino p  { color: var(--text-muted); @apply leading-relaxed mb-4; }
+  .prose-casino ul { @apply pl-5 mb-4 space-y-2; color: var(--text-muted); list-style: disc; }
+  .prose-casino ol { @apply pl-5 mb-4 space-y-3; color: var(--text-muted); list-style: decimal; }
+  .prose-casino strong { color: var(--text-white); }
+  .prose-casino a    { color: var(--gold); @apply underline-offset-2 hover:text-[#F5D76E]; }
+
+  /* ── FAQ ── */
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.3s ease;
+  }
+  .faq-answer.open { max-height: 500px; }
+}
