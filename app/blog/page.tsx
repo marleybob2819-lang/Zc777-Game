@@ -4,6 +4,9 @@ import { blogPosts } from "@/lib/data";
 import { BlogGrid }  from "@/components/sections/BlogGrid";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
 
+export const dynamic = "force-static";
+export const revalidate = 86400;
+
 export const metadata: Metadata = buildMetadata({
   title:       "Casino Blog | Tips, Strategies & Guides for Pakistani Players | ZC777",
   description: "Read expert casino tips, game strategies, and guides on ZC777 Blog. Learn how to play slots, poker, roulette, and blackjack online in Pakistan.",

@@ -5,6 +5,9 @@ import { FaqAccordion } from "@/components/ui/FaqAccordion";
 import { ScreenshotScroller } from "@/components/ui/ScreenshotScroller";
 import { APK_URL } from "@/lib/config";
 
+export const dynamic = "force-static";
+export const revalidate = 86400;
+
 export const metadata: Metadata = buildMetadata({
   title:       "ZC777 Game APK – Play & Win Real Cash in Pakistan",
   description: "Download ZC777 Game APK for Android. Play Teen Patti, Rummy & 30+ games. Win real money with fast JazzCash & EasyPaisa withdrawals. Safe & legal.",

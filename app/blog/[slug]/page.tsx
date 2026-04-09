@@ -8,6 +8,9 @@ import { FaqAccordion }  from "@/components/ui/FaqAccordion";
 
 interface Props { params: { slug: string } }
 
+export const dynamic = "force-static";
+export const revalidate = 86400;
+
 export function generateStaticParams() {
   return blogPosts.map((p) => ({ slug: p.slug }));
 }

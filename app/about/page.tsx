@@ -3,6 +3,9 @@ import { buildMetadata, breadcrumbSchema } from "@/lib/seo";
 import { team } from "@/lib/data";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
 
+export const dynamic = "force-static";
+export const revalidate = 86400;
+
 export const metadata: Metadata = buildMetadata({
   title:       "About ZC777 Casino | Our Story, Mission & Team | Pakistan's Trusted Casino",
   description: "Learn about ZC777 Casino — Pakistan's most trusted online casino since 2019. Our story, mission, values, expert team, and commitment to responsible gaming.",

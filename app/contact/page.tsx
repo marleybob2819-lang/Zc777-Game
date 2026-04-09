@@ -4,6 +4,9 @@ import { contactFaqs } from "@/lib/data";
 import { Breadcrumb }   from "@/components/ui/Breadcrumb";
 import { FaqAccordion } from "@/components/ui/FaqAccordion";
 import { ContactForm }  from "@/components/sections/ContactForm";
+
+export const dynamic = "force-static";
+export const revalidate = 86400;
 import { WHATSAPP_NUMBER } from "@/lib/config";
 
 export const metadata: Metadata = {
