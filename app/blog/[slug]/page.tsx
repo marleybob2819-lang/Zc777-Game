@@ -207,17 +207,6 @@ export default function BlogPostPage({ params }: Props) {
             );
           })()}
 
-          {/* Post navigation */}
-          <div className="grid grid-cols-2 gap-4 mt-10">
-            <Link href="/blog" className="casino-card p-5 block hover:no-underline">
-              <div className="text-xs mb-1" style={{ color: "var(--text-muted)" }}>← All Articles</div>
-              <div className="text-sm font-bold" style={{ color: "#F0EAD6" }}>Back to Blog</div>
-            </Link>
-            <Link href="/#play-now" className="casino-card p-5 block text-right hover:no-underline">
-              <div className="text-xs mb-1" style={{ color: "var(--text-muted)" }}>Ready to play? →</div>
-              <div className="text-sm font-bold" style={{ color: "#D4AF37" }}>Start at ZC777</div>
-            </Link>
-          </div>
 
         </div>
       </article>
