@@ -303,6 +303,35 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* DOWNLOAD GUIDES */}
+      <section className="py-14 section-lazy" aria-labelledby="dl-guides-heading">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-center mb-10">
+            <span className="section-label">Step-by-Step Guides</span>
+            <h2 id="dl-guides-heading" className="text-3xl font-bold" style={{ fontFamily:"var(--font-cinzel)",color:"#D4AF37" }}>Download ZC777 — Full Guides</h2>
+            <div className="gold-divider" />
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+            <Link href="/blog/download-zc777-apk" className="casino-card p-7 flex gap-5 items-start hover:no-underline group">
+              <span className="text-4xl flex-shrink-0">📱</span>
+              <div>
+                <p className="font-bold text-base mb-2 m-0 group-hover:text-[#D4AF37] transition-colors" style={{ fontFamily:"var(--font-cinzel)",color:"#F0EAD6" }}>Download ZC777 APK for Android</p>
+                <p className="text-sm m-0" style={{ color:"var(--text-muted)" }}>Free latest version for Android — complete step-by-step installation guide for Pakistan.</p>
+                <span className="inline-block mt-3 text-xs font-bold tracking-widest uppercase" style={{ color:"#D4AF37" }}>Read Guide →</span>
+              </div>
+            </Link>
+            <Link href="/blog/zc777-game-for-pc" className="casino-card p-7 flex gap-5 items-start hover:no-underline group">
+              <span className="text-4xl flex-shrink-0">💻</span>
+              <div>
+                <p className="font-bold text-base mb-2 m-0 group-hover:text-[#D4AF37] transition-colors" style={{ fontFamily:"var(--font-cinzel)",color:"#F0EAD6" }}>Download ZC777 Game for PC</p>
+                <p className="text-sm m-0" style={{ color:"var(--text-muted)" }}>Free latest version 2026 for Windows PC — full guide to play ZC777 on desktop in Pakistan.</p>
+                <span className="inline-block mt-3 text-xs font-bold tracking-widest uppercase" style={{ color:"#D4AF37" }}>Read Guide →</span>
+              </div>
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* SYSTEM REQUIREMENTS */}
       <section className="py-20" aria-labelledby="sysreq-heading">
         <div className="max-w-6xl mx-auto px-6">
