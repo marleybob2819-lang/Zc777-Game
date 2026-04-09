@@ -6,6 +6,7 @@ import { buildMetadata, blogPostSchema, breadcrumbSchema, faqSchema } from "@/li
 import { blogPosts } from "@/lib/data";
 import { Breadcrumb }    from "@/components/ui/Breadcrumb";
 import { FaqAccordion }  from "@/components/ui/FaqAccordion";
+import styles from "@/styles/prose.module.css";
 
 interface Props { params: { slug: string } }
 
@@ -166,7 +167,7 @@ export default function BlogPostPage({ params }: Props) {
           )}
 
           {/* Content */}
-          <div className="prose-casino" itemProp="articleBody">
+          <div className={styles.prose} itemProp="articleBody">
             {post.content ? renderContent(post.content) : <p>Content coming soon.</p>}
           </div>
 

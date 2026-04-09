@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { buildMetadata, breadcrumbSchema } from "@/lib/seo";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
+import styles from "@/styles/prose.module.css";
 
 export const dynamic = "force-static";
 export const revalidate = 86400;
@@ -39,7 +40,7 @@ export default function PrivacyPage() {
       </section>
 
       <section className="py-16">
-        <div className="max-w-3xl mx-auto px-6 prose-casino">
+        <div className={`max-w-3xl mx-auto px-6 ${styles.prose}`}>
 
           <p style={{ color: "var(--text-muted)" }}>
             We are committed to maintaining transparency and ensuring that your personal data is handled responsibly, especially for users in Pakistan.

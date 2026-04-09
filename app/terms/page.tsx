@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { buildMetadata, breadcrumbSchema } from "@/lib/seo";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
+import styles from "@/styles/prose.module.css";
 
 export const dynamic = "force-static";
 export const revalidate = 86400;
@@ -39,7 +40,7 @@ export default function TermsPage() {
       </section>
 
       <section className="py-16">
-        <div className="max-w-3xl mx-auto px-6 prose-casino">
+        <div className={`max-w-3xl mx-auto px-6 ${styles.prose}`}>
 
           <h2>Acceptance of Terms</h2>
           <p>By using our website, you confirm that:</p>
