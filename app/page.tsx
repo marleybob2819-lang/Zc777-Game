@@ -101,7 +101,7 @@ export default function HomePage() {
       </section>
 
       {/* DOWNLOAD INFO TABLE */}
-      <section className="py-20" id="download" aria-labelledby="download-heading">
+      <section className="py-20 section-lazy" id="download" aria-labelledby="download-heading">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-12"><span className="section-label">App Information</span><p className="text-2xl md:text-4xl font-bold text-center m-0" style={{ fontFamily:"var(--font-cinzel)",color:"#D4AF37" }}>Download Info Table</p><div className="gold-divider" /></div>
           <div className="rounded-2xl overflow-hidden border w-full" style={{ borderColor:"var(--border)" }}>
@@ -138,7 +138,7 @@ export default function HomePage() {
       </section>
 
       {/* OVERVIEW */}
-      <section className="py-20" style={{ background:"var(--bg-section)" }} aria-labelledby="overview-heading">
+      <section className="py-20 section-lazy" style={{ background:"var(--bg-section)" }} aria-labelledby="overview-heading">
         <div className="max-w-6xl mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
             <div>
@@ -167,7 +167,7 @@ export default function HomePage() {
       </section>
 
       {/* GAME SCREENSHOTS */}
-      <section className="py-20" style={{ background:"var(--bg-section)" }} aria-labelledby="game-screenshots-heading">
+      <section className="py-20 section-lazy" style={{ background:"var(--bg-section)" }} aria-labelledby="game-screenshots-heading">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-12">
             <span className="section-label">Screenshots</span>
@@ -179,7 +179,7 @@ export default function HomePage() {
       </section>
 
       {/* HOW TO START */}
-      <section className="py-20" aria-labelledby="start-heading">
+      <section className="py-20 section-lazy" aria-labelledby="start-heading">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-12"><span className="section-label">Getting Started</span><h2 id="start-heading" className="text-3xl font-bold" style={{ fontFamily:"var(--font-cinzel)",color:"#D4AF37" }}>How to Start with ZC777 Game</h2><div className="gold-divider" /></div>
           <div className="max-w-3xl mx-auto">
@@ -198,7 +198,7 @@ export default function HomePage() {
 
 
       {/* FEATURES */}
-      <section className="py-20" aria-labelledby="features-heading">
+      <section className="py-20 section-lazy" aria-labelledby="features-heading">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-12"><span className="section-label">Why Choose ZC777</span><h2 id="features-heading" className="text-3xl font-bold" style={{ fontFamily:"var(--font-cinzel)",color:"#D4AF37" }}>Top Features of ZC777 Game</h2><div className="gold-divider" /></div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -213,7 +213,7 @@ export default function HomePage() {
       </section>
 
       {/* GAMES */}
-      <section className="py-20" style={{ background:"var(--bg-section)" }} aria-labelledby="games-heading">
+      <section className="py-20 section-lazy" style={{ background:"var(--bg-section)" }} aria-labelledby="games-heading">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-12"><span className="section-label">Game Library</span><h2 id="games-heading" className="text-3xl font-bold" style={{ fontFamily:"var(--font-cinzel)",color:"#D4AF37" }}>Best Games to Play on ZC777 Game</h2><div className="gold-divider" /></div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -235,7 +235,7 @@ export default function HomePage() {
       </section>
 
       {/* BONUS TABLES */}
-      <section className="py-20" aria-labelledby="bonus-heading">
+      <section className="py-20 section-lazy" aria-labelledby="bonus-heading">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-12"><span className="section-label">New Player Benefits</span><h2 id="bonus-heading" className="text-3xl font-bold" style={{ fontFamily:"var(--font-cinzel)",color:"#D4AF37" }}>Benefits for New Players by Joining ZC777 Game</h2><div className="gold-divider" /></div>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -268,7 +268,7 @@ export default function HomePage() {
       </section>
 
       {/* DOWNLOAD & INSTALL STEPS */}
-      <section className="py-20" style={{ background:"var(--bg-section)" }} id="download-steps" aria-labelledby="dl-heading">
+      <section className="py-20 section-lazy" style={{ background:"var(--bg-section)" }} id="download-steps" aria-labelledby="dl-heading">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-12"><span className="section-label">Installation Guide</span><h2 id="dl-heading" className="text-3xl font-bold" style={{ fontFamily:"var(--font-cinzel)",color:"#D4AF37" }}>Download ZC777 Game APK Latest Version For Android</h2><div className="gold-divider" /></div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
@@ -342,7 +342,7 @@ export default function HomePage() {
       </section>
 
       {/* TIPS */}
-      <section className="py-20" style={{ background:"var(--bg-section)" }} aria-labelledby="tips-heading">
+      <section className="py-20 section-lazy" style={{ background:"var(--bg-section)" }} aria-labelledby="tips-heading">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-12"><span className="section-label">Expert Advice</span><h2 id="tips-heading" className="text-3xl font-bold" style={{ fontFamily:"var(--font-cinzel)",color:"#D4AF37" }}>Tips &amp; Tricks to Earn Maximum on ZC777 Game</h2><div className="gold-divider" /><p className="text-sm mt-4 max-w-xl mx-auto" style={{ color:"var(--text-muted)" }}>For a deeper look, read our full <Link href="/blog/zc777-game-tips" className="underline underline-offset-2" style={{ color:"#D4AF37" }}>ZC777 Game Tips guide</Link> with 10 expert strategies.</p></div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -357,7 +357,7 @@ export default function HomePage() {
       </section>
 
       {/* WHAT'S NEW */}
-      <section className="py-20" aria-labelledby="whatsnew-heading">
+      <section className="py-20 section-lazy" aria-labelledby="whatsnew-heading">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-12"><span className="section-label">Latest Update</span><h2 id="whatsnew-heading" className="text-3xl font-bold" style={{ fontFamily:"var(--font-cinzel)",color:"#D4AF37" }}>What&apos;s New in the Latest Version of ZC777 Game?</h2><div className="gold-divider" /></div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl mx-auto">
@@ -369,7 +369,7 @@ export default function HomePage() {
       </section>
 
       {/* PROS & CONS */}
-      <section className="py-20" style={{ background:"var(--bg-section)" }} aria-labelledby="proscons-heading">
+      <section className="py-20 section-lazy" style={{ background:"var(--bg-section)" }} aria-labelledby="proscons-heading">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-12"><span className="section-label">Honest Review</span><p className="text-3xl font-bold m-0" style={{ fontFamily:"var(--font-cinzel)",color:"#D4AF37" }}>Pros &amp; Cons of Using ZC777 Game</p><div className="gold-divider" /></div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full">
@@ -429,7 +429,7 @@ export default function HomePage() {
       </section>
 
       {/* SAFETY */}
-      <section className="py-16" aria-labelledby="safety-heading">
+      <section className="py-16 section-lazy" aria-labelledby="safety-heading">
         <div className="max-w-6xl mx-auto px-6">
           <div className="casino-card p-8 max-w-3xl mx-auto">
             <h2 id="safety-heading" className="text-xl font-bold mb-4" style={{ fontFamily:"var(--font-cinzel)",color:"#D4AF37" }}>🔒 About the Safety &amp; Security of ZC777 Game</h2>
@@ -439,7 +439,7 @@ export default function HomePage() {
       </section>
 
       {/* CONTACT */}
-      <section className="py-20" style={{ background:"var(--bg-section)" }} aria-labelledby="contact-heading">
+      <section className="py-20 section-lazy" style={{ background:"var(--bg-section)" }} aria-labelledby="contact-heading">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-12"><span className="section-label">Support</span><p className="text-3xl font-bold m-0" style={{ fontFamily:"var(--font-cinzel)",color:"#D4AF37" }}>How to Contact ZC777 Game</p><div className="gold-divider" /></div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
@@ -451,7 +451,7 @@ export default function HomePage() {
       </section>
 
       {/* FAQ */}
-      <section className="py-20" aria-labelledby="faq-heading">
+      <section className="py-20 section-lazy" aria-labelledby="faq-heading">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-12"><span className="section-label">Common Questions</span><h2 id="faq-heading" className="text-3xl font-bold" style={{ fontFamily:"var(--font-cinzel)",color:"#D4AF37" }}>Frequently Asked Questions</h2><div className="gold-divider" /></div>
           <div className="max-w-3xl mx-auto"><FaqAccordion faqs={homeFaqs} /></div>
@@ -459,7 +459,7 @@ export default function HomePage() {
       </section>
 
       {/* FINAL CTA */}
-      <section className="py-24 text-center" style={{ background:"var(--bg-section)" }}>
+      <section className="py-24 text-center section-lazy" style={{ background:"var(--bg-section)" }}>
         <div className="max-w-6xl mx-auto px-6">
           <p className="text-3xl font-bold mb-4 m-0" style={{ fontFamily:"var(--font-cinzel)",color:"#D4AF37" }}>Conclusion</p>
           <p className="max-w-3xl mx-auto mb-4" style={{ color:"var(--text-muted)" }}>ZC777 Game is one of the most popular online card games in Pakistan. It provides fun, entertainment, and a great chance to earn money if you play wisely. The deposit and withdrawal system through JazzCash or EasyPaisa is very convenient. Play responsibly, use smart strategies, and focus on skill rather than luck for the best experience.</p>

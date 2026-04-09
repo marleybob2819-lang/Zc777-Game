@@ -25,10 +25,10 @@ export function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 border-b transition-all duration-300 ${
-        scrolled ? "bg-[rgba(10,10,15,0.98)] shadow-xl" : "bg-[rgba(10,10,15,0.95)] backdrop-blur-md"
+      className={`fixed top-0 left-0 right-0 z-50 border-b ${
+        scrolled ? "bg-[rgba(10,10,15,0.99)] shadow-xl" : "bg-[rgba(10,10,15,0.97)]"
       }`}
-      style={{ borderColor: "var(--border)" }}
+      style={{ transition: "background 0.3s ease, box-shadow 0.3s ease", borderColor: "var(--border)" }}
       role="banner"
     >
       <div className="max-w-7xl mx-auto px-6">

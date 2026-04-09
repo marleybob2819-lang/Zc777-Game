@@ -40,39 +40,52 @@
   /* ── BUTTONS ── */
   .btn-primary {
     @apply inline-flex items-center gap-2 px-6 py-3 rounded-lg font-semibold
-           text-sm tracking-wide cursor-pointer transition-all duration-300
+           text-sm tracking-wide cursor-pointer
            bg-gradient-to-r from-[#A07C10] via-[#D4AF37] to-[#F5D76E]
-           text-[#0A0A0F] shadow-lg hover:-translate-y-0.5;
+           text-[#0A0A0F] shadow-lg;
     font-family: var(--font-cinzel);
     box-shadow: 0 4px 20px rgba(212,175,55,0.35);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    will-change: transform;
   }
-  .btn-primary:hover { box-shadow: 0 8px 30px rgba(212,175,55,0.5); }
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(212,175,55,0.5);
+  }
 
   .btn-outline {
     @apply inline-flex items-center gap-2 px-6 py-3 rounded-lg font-semibold
-           text-sm tracking-wide cursor-pointer transition-all duration-300
-           bg-transparent border border-[#D4AF37] text-[#D4AF37]
-           hover:bg-[rgba(212,175,55,0.1)] hover:text-[#F5D76E];
+           text-sm tracking-wide cursor-pointer
+           bg-transparent border border-[#D4AF37] text-[#D4AF37];
     font-family: var(--font-cinzel);
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+  .btn-outline:hover {
+    background: rgba(212,175,55,0.1);
+    color: #F5D76E;
   }
 
   /* ── CARDS ── */
   .casino-card {
-    @apply relative overflow-hidden rounded-2xl border transition-all duration-300;
+    @apply relative overflow-hidden rounded-2xl border;
     background: var(--bg-card);
     border-color: var(--border);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+    will-change: transform;
   }
   .casino-card::before {
     content: '';
-    @apply absolute top-0 left-0 right-0 h-0.5 opacity-0 transition-opacity duration-300;
+    @apply absolute top-0 left-0 right-0 h-0.5;
     background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
   }
   .casino-card:hover {
-    @apply -translate-y-1.5;
+    transform: translateY(-6px);
     border-color: rgba(212,175,55,0.5);
     box-shadow: var(--shadow-gold);
   }
-  .casino-card:hover::before { @apply opacity-100; }
+  .casino-card:hover::before { opacity: 1; }
 
   /* ── SECTION LABEL ── */
   .section-label {
@@ -143,4 +156,10 @@
     transition: max-height 0.4s ease, padding 0.3s ease;
   }
   .faq-answer.open { max-height: 500px; }
+
+  /* ── BELOW FOLD SECTIONS ── */
+  .section-lazy {
+    content-visibility: auto;
+    contain-intrinsic-size: 0 500px;
+  }
 }
