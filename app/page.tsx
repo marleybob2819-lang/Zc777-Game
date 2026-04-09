@@ -186,7 +186,7 @@ export default function HomePage() {
             <ol className="space-y-0">
               {[{n:"01",t:"Download the APK",d:"Open the official ZC777 Game website and download the APK file to your Android device."},{n:"02",t:"Allow Unknown Sources",d:"Click on the downloaded APK file to start installation. Allow Unknown Sources in Settings to proceed."},{n:"03",t:"Install the App",d:"Complete the installation. Once done, the ZC777 Game icon will appear on your home screen."},{n:"04",t:"Register or Play as Guest",d:"Open the app and log in with your mobile number or play as a guest to explore first."},{n:"05",t:"Claim Welcome Bonus",d:"Once logged in, you receive free chips or welcome bonuses to start playing right away."},{n:"06",t:"Choose a Game & Play",d:"Browse 30+ games, choose your table, and start enjoying real money gameplay!"}].map((step) => (
                 <li key={step.n} className="flex gap-5 py-5 border-b last:border-0" style={{ borderColor:"var(--border)" }}>
-                  <span className="text-3xl font-bold flex-shrink-0 w-12 leading-none mt-1" style={{ fontFamily:"var(--font-cinzel)",color:"rgba(212,175,55,0.25)" }}>{step.n}</span>
+                  <span className="text-3xl font-bold flex-shrink-0 w-12 leading-none mt-1" style={{ fontFamily:"var(--font-cinzel)",color:"#FFFFFF" }}>{step.n}</span>
                   <div><p className="font-bold text-base mb-1 m-0" style={{ fontFamily:"var(--font-cinzel)",color:"#F0EAD6" }}>{step.t}</p><p className="text-sm leading-relaxed m-0" style={{ color:"var(--text-muted)" }}>{step.d}</p></div>
                 </li>
               ))}
@@ -348,7 +348,7 @@ export default function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             {tips.map((tip,i) => (
               <div key={tip.t} className="casino-card p-5 flex gap-4">
-                <span className="text-xl font-bold flex-shrink-0" style={{ fontFamily:"var(--font-cinzel)",color:"rgba(212,175,55,0.35)" }}>{String(i+1).padStart(2,"0")}</span>
+                <span className="text-xl font-bold flex-shrink-0" style={{ fontFamily:"var(--font-cinzel)",color:"#FFFFFF" }}>{String(i+1).padStart(2,"0")}</span>
                 <div><p className="font-bold text-sm mb-1 m-0" style={{ fontFamily:"var(--font-cinzel)",color:"#F0EAD6" }}>{tip.t}</p><p className="text-sm leading-relaxed m-0" style={{ color:"var(--text-muted)" }}>{tip.d}</p></div>
               </div>
             ))}
