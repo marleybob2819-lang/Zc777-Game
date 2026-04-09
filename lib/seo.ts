@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? "https://www.zc777casino.com";
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? "https://www.zc777apk.com.pk";
 
 interface SEOProps {
   title:       string;
