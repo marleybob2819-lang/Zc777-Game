@@ -27,12 +27,19 @@ const lato = Lato({
   display: "swap",
 });
 
-export const metadata: Metadata = buildMetadata({
-  title:       "ZC777 Game | Download APK & Play Real Money Games in Pakistan 2026",
-  description: "ZC777 Game is Pakistan's premier online card game platform. Download APK and play Teen Patti, Rummy, Dragon vs Tiger. Win real cash via JazzCash & EasyPaisa.",
-  keywords:    "ZC777 Game, ZC777 APK download, online card game Pakistan, Teen Patti Pakistan, real money game Pakistan",
-  path:        "/",
-});
+export const metadata: Metadata = {
+  ...buildMetadata({
+    title:       "ZC777 Game | Download APK & Play Real Money Games in Pakistan 2026",
+    description: "ZC777 Game is Pakistan's premier online card game platform. Download APK and play Teen Patti, Rummy, Dragon vs Tiger. Win real cash via JazzCash & EasyPaisa.",
+    keywords:    "ZC777 Game, ZC777 APK download, online card game Pakistan, Teen Patti Pakistan, real money game Pakistan",
+    path:        "/",
+  }),
+  icons: {
+    icon: "/images/zc777-game-Favicon.webp",
+    shortcut: "/images/zc777-game-Favicon.webp",
+    apple: "/images/zc777-game-Favicon.webp",
+  },
+};
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
