@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 
@@ -34,14 +35,14 @@ export function Navbar() {
         <nav className="h-[68px] flex items-center justify-between gap-6" role="navigation" aria-label="Main navigation">
           {/* Logo */}
           <Link href="/" className="flex items-center flex-shrink-0" aria-label="ZC777 Game Home">
-            <img
+            <Image
               src="/images/ZC777-GAME-APK.webp"
               alt="ZC777 Game Logo"
               title="ZC777 Game"
               width={160}
               height={40}
               className="h-10 w-auto object-contain"
-              loading="eager"
+              priority
             />
           </Link>
           {/* Desktop links */}
