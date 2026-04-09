@@ -163,20 +163,27 @@ export function ScreenshotScroller() {
       </div>
 
       {/* Dot indicators */}
-      <div className="flex gap-2">
+      <div className="flex items-center">
         {slides.map((_, i) => (
           <button
             key={i}
             type="button"
             aria-label={`Go to screenshot ${i + 1}`}
             onClick={() => { if (!animating) setCurrent(i); }}
-            className="rounded-full transition-all duration-300"
-            style={{
-              width: i === current ? "24px" : "8px",
-              height: "8px",
-              background: i === current ? "var(--gold)" : "rgba(212,175,55,0.3)",
-            }}
-          />
+            className="flex items-center justify-center"
+            style={{ width: "44px", height: "44px", background: "transparent", border: "none", cursor: "pointer" }}
+          >
+            <span
+              className="rounded-full"
+              style={{
+                display: "block",
+                width: i === current ? "24px" : "8px",
+                height: "8px",
+                background: i === current ? "var(--gold)" : "rgba(212,175,55,0.3)",
+                transition: "width 0.3s ease, background 0.3s ease",
+              }}
+            />
+          </button>
         ))}
       </div>
 
