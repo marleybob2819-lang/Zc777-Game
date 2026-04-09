@@ -179,7 +179,34 @@ export default function BlogPostPage({ params }: Props) {
             <FaqAccordion faqs={postFaqs} />
           </section>
 
-          {/* Author box */}
+          {/* Related Articles */}
+          {(() => {
+            const related = blogPosts
+              .filter((p) => p.slug !== post.slug && p.category === post.category)
+              .slice(0, 2);
+            const fallback = related.length < 2
+              ? blogPosts.filter((p) => p.slug !== post.slug && !related.includes(p)).slice(0, 2 - related.length)
+              : [];
+            const shown = [...related, ...fallback];
+            if (shown.length === 0) return null;
+            return (
+              <section className="mt-16" aria-labelledby="related-heading">
+                <h2 id="related-heading" className="text-2xl font-bold mb-6" style={{ fontFamily: "var(--font-cinzel)", color: "#D4AF37" }}>
+                  Related Articles
+                </h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {shown.map((rp) => (
+                    <Link key={rp.slug} href={`/blog/${rp.slug}`} className="casino-card p-5 block hover:no-underline group">
+                      <div className="text-xs uppercase tracking-widest mb-2" style={{ color: "#D4AF37" }}>{rp.category}</div>
+                      <div className="text-sm font-bold leading-snug mb-2 group-hover:text-[#D4AF37] transition-colors" style={{ color: "#F0EAD6" }}>{rp.title}</div>
+                      <div className="text-xs" style={{ color: "var(--text-muted)" }}>{rp.readTime} · {rp.date}</div>
+                    </Link>
+                  ))}
+                </div>
+              </section>
+            );
+          })()}
+
           {/* Post navigation */}
           <div className="grid grid-cols-2 gap-4 mt-10">
             <Link href="/blog" className="casino-card p-5 block hover:no-underline">
