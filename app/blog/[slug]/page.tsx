@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { buildMetadata, blogPostSchema, breadcrumbSchema, faqSchema } from "@/lib/seo";
 import { blogPosts } from "@/lib/data";
 import { Breadcrumb }    from "@/components/ui/Breadcrumb";
@@ -82,7 +83,7 @@ function renderContent(md: string) {
         const [, alt, src] = imgMatch;
         elements.push(
           <figure key={i} className="my-6">
-            <img src={src} alt={alt} title={alt} loading="lazy" className="w-full rounded-xl" style={{ borderRadius: "12px", border: "1px solid var(--border)" }} />
+            <Image src={src} alt={alt} title={alt} width={800} height={500} loading="lazy" className="w-full rounded-xl" style={{ borderRadius: "12px", border: "1px solid var(--border)" }} />
             {alt && <figcaption className="text-xs text-center mt-2" style={{ color: "var(--text-muted)" }}>{alt}</figcaption>}
           </figure>
         );

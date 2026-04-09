@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef } from "react";
+import Image from "next/image";
 
 const slides = [
   {
@@ -120,10 +121,12 @@ export function ScreenshotScroller() {
         {/* Image card with slide animation */}
         <div className="mx-12 overflow-hidden rounded-2xl casino-card" style={{ background: "var(--bg-card)" }}>
           <div style={slideStyle}>
-            <img
+            <Image
               src={`/images/${slide.file}`}
               alt={slide.alt}
               title={slide.title}
+              width={600}
+              height={400}
               className="w-full object-cover object-center block"
               style={{ borderBottom: "1px solid var(--border)" }}
               loading="lazy"

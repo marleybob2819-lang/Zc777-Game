@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { BlogPost } from "@/types";
 
 export function BlogCard({ post }: { post: BlogPost }) {
@@ -6,10 +7,12 @@ export function BlogCard({ post }: { post: BlogPost }) {
     <article className="casino-card overflow-hidden" itemScope itemType="https://schema.org/BlogPosting">
       <Link href={`/blog/${post.slug}`} className="block hover:no-underline">
         {post.featureImage ? (
-          <img
+          <Image
             src={post.featureImage.src}
             alt={post.featureImage.alt}
             title={post.featureImage.title}
+            width={600}
+            height={208}
             loading="lazy"
             className="w-full h-52 object-cover"
           />
