@@ -3,7 +3,9 @@ const nextConfig = {
   swcMinify: true,
   compress: true,
   experimental: {
-    optimizeCss: true,
+    // optimizeCss (critters) breaks dev hydration in Next 13.5 on some setups
+    // and is only useful for production HTML. Enable only in prod builds.
+    optimizeCss: process.env.NODE_ENV === "production",
   },
   images: {
     formats: ["image/avif", "image/webp"],
