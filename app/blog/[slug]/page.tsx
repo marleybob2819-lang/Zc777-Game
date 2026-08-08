@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
-import { buildMetadata, blogPostSchema, breadcrumbSchema, faqSchema } from "@/lib/seo";
+import { buildMetadata, blogPostSchema, breadcrumbSchema } from "@/lib/seo";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { blogPosts } from "@/lib/data";
 import { Breadcrumb }    from "@/components/ui/Breadcrumb";
-import { FaqAccordion }  from "@/components/ui/FaqAccordion";
 import styles from "@/styles/prose.module.css";
 
 interface Props { params: { slug: string } }
@@ -14,17 +14,21 @@ export const dynamic = "force-static";
 export const revalidate = 86400;
 
 export function generateStaticParams() {
-  return blogPosts.map((p) => ({ slug: p.slug }));
+  return blogPosts
+    .filter((p) => p.slug !== "zc777-game-about-us")
+    .map((p) => ({ slug: p.slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = blogPosts.find((p) => p.slug === params.slug);
   if (!post) return {};
   return buildMetadata({
-    title:         `${post.title} | ZC777 Casino Blog`,
+    title:         post.title,
     description:   post.excerpt,
+    keywords:      `ZC777 Game, ${post.title}, ZC777 APK, Pakistan`,
     path:          `/blog/${post.slug}`,
     type:          "article",
+    image:         post.featureImage?.src,
     datePublished: post.dateISO,
     dateModified:  post.dateModifiedISO ?? post.dateISO,
     author:        post.author,
@@ -34,11 +38,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 /** Converts markdown inline syntax to HTML (bold + links) */
 function inlineHtml(text: string): string {
   return text
-    .replace(/\*\*(.*?)\*\*/g, "<strong style='color:#F0EAD6'>$1</strong>")
-    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, "<a href='$2' style='color:#D4AF37;text-decoration:underline;text-underline-offset:3px;' >$1</a>");
+    .replace(/\*\*(.*?)\*\*/g, "<strong style='color:#333333'>$1</strong>")
+    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, "<a href='$2' style='color:#1a1a1a;text-decoration:underline;text-underline-offset:3px;' >$1</a>");
 }
 
-/** Very simple markdown → JSX converter for blog content */
+/** Very simple markdown JSX converter for blog content */
 function renderContent(md: string) {
   const lines = md.trim().split("\n");
   const elements: React.ReactNode[] = [];
@@ -51,7 +55,7 @@ function renderContent(md: string) {
     if (line.startsWith("### ")) { elements.push(<h3 key={i} dangerouslySetInnerHTML={{ __html: inlineHtml(line.slice(4)) }} />); i++; continue; }
     if (line.startsWith("#### ")){ elements.push(<h4 key={i} dangerouslySetInnerHTML={{ __html: inlineHtml(line.slice(5)) }} />); i++; continue; }
     if (line.startsWith("**") && line.endsWith("**")) {
-      elements.push(<h5 key={i} className="font-bold" style={{ color: "#F0EAD6" }}>{line.slice(2, -2)}</h5>);
+      elements.push(<h5 key={i} className="font-bold" style={{ color: "#333333" }}>{line.slice(2, -2)}</h5>);
       i++; continue;
     }
 
@@ -106,37 +110,45 @@ export default function BlogPostPage({ params }: Props) {
   const post = blogPosts.find((p) => p.slug === params.slug);
   if (!post) notFound();
 
-  const postFaqs = [
-    { question: `What is the main topic of this article?`,      answer: post.excerpt },
-    { question: `Who wrote this article?`,                      answer: `This article was written by ${post.author}, ${post.authorTitle} at ZC777 Casino.` },
-    { question: `When was this article published?`,             answer: `This article was published on ${post.date} and covers ${post.category} strategies for Pakistani players.` },
-  ];
-
   return (
     <>
       {/* Schemas */}
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(blogPostSchema({ title: post.title, description: post.excerpt, datePublished: post.dateISO, dateModified: post.dateModifiedISO ?? post.dateISO, author: post.author, authorTitle: post.authorTitle, slug: post.slug })) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema([{ name: "Home", url: "/" }, { name: "Blog", url: "/blog" }, { name: post.title, url: `/blog/${post.slug}` }])) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema(postFaqs)) }} />
+      <JsonLd data={blogPostSchema({ title: post.title, description: post.excerpt, datePublished: post.dateISO, dateModified: post.dateModifiedISO ?? post.dateISO, author: post.author, authorTitle: post.authorTitle, slug: post.slug, image: post.featureImage?.src }) as Record<string, unknown>} />
+      <JsonLd data={breadcrumbSchema([{ name: "Home", url: "/" }, { name: "Blog", url: "/blog" }, { name: post.title, url: `/blog/${post.slug}` }]) as Record<string, unknown>} />
 
       {/* ARTICLE HERO */}
       <section
-        className="pt-[72px] pb-12 border-b"
-        style={{ background: "radial-gradient(ellipse at 50% 0%, rgba(212,175,55,0.07) 0%, transparent 60%), linear-gradient(180deg,#0F0F18,#0A0A0F)", borderColor: "var(--border)" }}
+        className="pt-[72px] pb-6 border-b"
+        style={{ background: "#ffffff", borderColor: "var(--border)" }}
       >
         <div className="max-w-3xl mx-auto px-6">
           <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Blog", href: "/blog" }, { label: post.title }]} />
 
-          <h1 className="text-3xl md:text-4xl font-bold mb-5 leading-tight" style={{ fontFamily: "var(--font-cinzel)", color: "#D4AF37" }}
+          <h1 className="text-3xl md:text-4xl font-bold mb-3 leading-tight" style={{ fontFamily: "var(--font-cinzel)", color: "#1a1a1a" }}
             itemProp="headline">
             {post.title}
           </h1>
+          <p className="text-sm mb-4 m-0" style={{ color: "var(--text-muted)" }}>
+            By <span itemProp="author">{post.author}</span>
+            {post.authorTitle ? ` · ${post.authorTitle}` : ""}
+            {" · "}
+            <time dateTime={post.dateISO} itemProp="datePublished">{post.date}</time>
+            {post.dateModifiedISO && post.dateModifiedISO !== post.dateISO && (
+              <>
+                {" · Updated "}
+                <time dateTime={post.dateModifiedISO} itemProp="dateModified">
+                  {post.dateModifiedISO}
+                </time>
+              </>
+            )}
+            {" · "}{post.readTime}
+          </p>
           <p className="text-base leading-relaxed" style={{ color: "var(--text-muted)" }}>{post.excerpt}</p>
         </div>
       </section>
 
       {/* ARTICLE BODY */}
-      <article className="py-16" itemScope itemType="https://schema.org/BlogPosting">
+      <article className="py-8" itemScope itemType="https://schema.org/BlogPosting">
         <meta itemProp="datePublished" content={post.dateISO} />
         <meta itemProp="author" content={post.author} />
 
@@ -144,14 +156,15 @@ export default function BlogPostPage({ params }: Props) {
 
           {/* Feature Image / Thumb */}
           {post.featureImage ? (
-            <figure className="mb-10">
-              <img
+            <figure className="mb-6">
+              <Image
                 src={post.featureImage.src}
                 alt={post.featureImage.alt}
                 title={post.featureImage.title}
-                loading="eager"
-                fetchPriority="high"
-                className="w-full rounded-2xl"
+                width={1200}
+                height={675}
+                sizes="(max-width: 768px) 100vw, 768px"
+                className="w-full h-auto rounded-2xl"
                 style={{ border: "1px solid var(--border)" }}
               />
               {post.featureImage.caption && (
@@ -161,9 +174,7 @@ export default function BlogPostPage({ params }: Props) {
               )}
             </figure>
           ) : (
-            <div className={`h-64 flex items-center justify-center text-8xl rounded-2xl mb-10 bg-gradient-to-br ${post.bgClass}`} aria-hidden="true">
-              {post.emoji}
-            </div>
+            <div className={`h-64 rounded-none mb-6 bg-gradient-to-br ${post.bgClass}`} aria-hidden="true" />
           )}
 
           {/* Content */}
@@ -171,34 +182,26 @@ export default function BlogPostPage({ params }: Props) {
             {post.content ? renderContent(post.content) : <p>Content coming soon.</p>}
           </div>
 
-          {/* FAQ */}
-          <section className="mt-16" aria-labelledby="post-faq-heading">
-            <h2 id="post-faq-heading" className="text-2xl font-bold mb-6" style={{ fontFamily: "var(--font-cinzel)", color: "#D4AF37" }}>
-              Frequently Asked Questions
-            </h2>
-            <FaqAccordion faqs={postFaqs} />
-          </section>
-
           {/* Related Articles */}
           {(() => {
             const related = blogPosts
-              .filter((p) => p.slug !== post.slug && p.category === post.category)
+              .filter((p) => p.slug !== post.slug && p.slug !== "zc777-game-about-us" && p.category === post.category)
               .slice(0, 2);
             const fallback = related.length < 2
-              ? blogPosts.filter((p) => p.slug !== post.slug && !related.includes(p)).slice(0, 2 - related.length)
+              ? blogPosts.filter((p) => p.slug !== post.slug && p.slug !== "zc777-game-about-us" && !related.includes(p)).slice(0, 2 - related.length)
               : [];
             const shown = [...related, ...fallback];
             if (shown.length === 0) return null;
             return (
               <section className="mt-16" aria-labelledby="related-heading">
-                <h2 id="related-heading" className="text-2xl font-bold mb-6" style={{ fontFamily: "var(--font-cinzel)", color: "#D4AF37" }}>
+                <h2 id="related-heading" className="text-2xl font-bold mb-6" style={{ fontFamily: "var(--font-cinzel)", color: "#1a1a1a" }}>
                   Related Articles
                 </h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {shown.map((rp) => (
-                    <Link key={rp.slug} href={`/blog/${rp.slug}`} className="casino-card p-5 block hover:no-underline group">
-                      <div className="text-xs uppercase tracking-widest mb-2" style={{ color: "#D4AF37" }}>{rp.category}</div>
-                      <div className="text-sm font-bold leading-snug mb-2 group-hover:text-[#D4AF37] transition-colors" style={{ color: "#F0EAD6" }}>{rp.title}</div>
+                    <Link key={rp.slug} href={`/blog/${rp.slug}`} className="block hover:no-underline group">
+                      <div className="text-xs uppercase tracking-widest mb-2" style={{ color: "#1a1a1a" }}>{rp.category}</div>
+                      <div className="text-sm font-bold leading-snug mb-2 group-hover:text-[#1a1a1a] transition-colors" style={{ color: "#333333" }}>{rp.title}</div>
                       <div className="text-xs" style={{ color: "var(--text-muted)" }}>{rp.readTime} · {rp.date}</div>
                     </Link>
                   ))}

@@ -1,7 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
-import Image from "next/image";
+import { useRef, useState } from "react";
 
 const slides = [
   {
@@ -48,10 +47,10 @@ const slides = [
   },
 ];
 
-export function ScreenshotScroller() {
+export default function ScreenshotScroller() {
   const [current, setCurrent] = useState(0);
-  const [direction, setDirection] = useState<"left" | "right" | null>(null);
   const [animating, setAnimating] = useState(false);
+  const [direction, setDirection] = useState<"left" | "right" | null>(null);
   const touchStartX = useRef<number | null>(null);
 
   const navigate = (dir: "left" | "right") => {
@@ -61,8 +60,12 @@ export function ScreenshotScroller() {
     setTimeout(() => {
       setCurrent((c) =>
         dir === "right"
-          ? c === slides.length - 1 ? 0 : c + 1
-          : c === 0 ? slides.length - 1 : c - 1
+          ? c === slides.length - 1
+            ? 0
+            : c + 1
+          : c === 0
+            ? slides.length - 1
+            : c - 1
       );
       setAnimating(false);
       setDirection(null);
@@ -96,82 +99,83 @@ export function ScreenshotScroller() {
 
   return (
     <div className="flex flex-col items-center gap-5 w-full">
-      {/* Carousel */}
       <div
         className="relative w-full select-none"
         onTouchStart={onTouchStart}
         onTouchEnd={onTouchEnd}
       >
-        {/* Prev button */}
         <button
           type="button"
           aria-label="Previous screenshot"
           onClick={() => navigate("left")}
           className="absolute left-0 top-1/2 -translate-y-1/2 z-10 flex items-center justify-center w-10 h-10 rounded-full border transition-all duration-300 hover:scale-110"
           style={{
-            background: "var(--bg-card)",
+            background: "#ffffff",
             borderColor: "var(--gold)",
             color: "var(--gold)",
-            boxShadow: "0 0 14px rgba(212,175,55,0.25)",
           }}
         >
           &#8592;
         </button>
 
-        {/* Image card with slide animation */}
-        <div className="mx-12 overflow-hidden rounded-2xl casino-card" style={{ background: "var(--bg-card)" }}>
-          <div style={slideStyle}>
-            <Image
+        <div style={slideStyle}>
+          <div className="mx-12 overflow-hidden">
+            {/* Native img — avoids next/image srcSet/fetchPriority hydration mismatches */}
+            <img
               src={`/images/${slide.file}`}
               alt={slide.alt}
-              title={slide.title}
               width={600}
               height={400}
               className="w-full object-cover object-center block"
-              style={{ borderBottom: "1px solid var(--border)" }}
+              decoding="async"
               loading="lazy"
             />
-            <div className="px-5 py-4 text-center" style={{ background: "var(--bg-mid)" }}>
+            <div className="px-5 py-4 text-center">
               <p
                 className="text-sm font-bold tracking-widest uppercase mb-1"
                 style={{ color: "var(--gold)", fontFamily: "var(--font-cinzel)" }}
               >
                 {slide.title}
               </p>
-              <p className="text-xs" style={{ color: "var(--text-muted)" }}>
+              <p className="text-sm" style={{ color: "var(--text-muted)" }}>
                 {slide.desc}
               </p>
             </div>
           </div>
         </div>
 
-        {/* Next button */}
         <button
           type="button"
           aria-label="Next screenshot"
           onClick={() => navigate("right")}
           className="absolute right-0 top-1/2 -translate-y-1/2 z-10 flex items-center justify-center w-10 h-10 rounded-full border transition-all duration-300 hover:scale-110"
           style={{
-            background: "var(--bg-card)",
+            background: "#ffffff",
             borderColor: "var(--gold)",
             color: "var(--gold)",
-            boxShadow: "0 0 14px rgba(212,175,55,0.25)",
           }}
         >
           &#8594;
         </button>
       </div>
 
-      {/* Dot indicators */}
       <div className="flex items-center">
         {slides.map((_, i) => (
           <button
             key={i}
             type="button"
             aria-label={`Go to screenshot ${i + 1}`}
-            onClick={() => { if (!animating) setCurrent(i); }}
+            onClick={() => {
+              if (!animating) setCurrent(i);
+            }}
             className="flex items-center justify-center"
-            style={{ width: "44px", height: "44px", background: "transparent", border: "none", cursor: "pointer" }}
+            style={{
+              width: "44px",
+              height: "44px",
+              background: "transparent",
+              border: "none",
+              cursor: "pointer",
+            }}
           >
             <span
               className="rounded-full"
@@ -179,7 +183,7 @@ export function ScreenshotScroller() {
                 display: "block",
                 width: i === current ? "24px" : "8px",
                 height: "8px",
-                background: i === current ? "var(--gold)" : "rgba(212,175,55,0.3)",
+                background: i === current ? "var(--gold)" : "rgba(0,0,0,0.3)",
                 transition: "width 0.3s ease, background 0.3s ease",
               }}
             />
@@ -187,8 +191,7 @@ export function ScreenshotScroller() {
         ))}
       </div>
 
-      {/* Counter */}
-      <p className="text-xs" style={{ color: "var(--text-muted)", fontFamily: "var(--font-cinzel)" }}>
+      <p className="text-sm" style={{ color: "var(--text-muted)", fontFamily: "var(--font-cinzel)" }}>
         {current + 1} / {slides.length}
       </p>
     </div>

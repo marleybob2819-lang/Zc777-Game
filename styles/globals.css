@@ -3,145 +3,110 @@
 @tailwind utilities;
 
 :root {
-  --font-cinzel: 'Cinzel', serif;
-  --font-lato:   'Lato', sans-serif;
-  --gold:        #D4AF37;
-  --gold-light:  #F5D76E;
-  --gold-dark:   #A07C10;
+  --font-inter:  system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-cinzel: var(--font-inter);
+  --font-lato:   var(--font-inter);
+  --gold:        #1a1a1a;
+  --gold-light:  #404040;
+  --gold-dark:   #111111;
   --crimson:     #8B0000;
-  --bg-dark:     #0A0A0F;
-  --bg-card:     #12121A;
-  --bg-mid:      #1A1A28;
-  --bg-section:  #0F0F18;
-  --text-white:  #FFFFFF;
-  --text-muted:  #FFFFFF;
-  --border:      rgba(212,175,55,0.25);
-  --shadow-gold: 0 0 30px rgba(212,175,55,0.15);
+  --bg-dark:     #ffffff;
+  --bg-card:     #ffffff;
+  --bg-mid:      #ffffff;
+  --bg-section:  #ffffff;
+  --text-white:  #1a1a1a;
+  --text-muted:  #333333;
+  --border:      rgba(0,0,0,0.12);
+  --shadow-gold: none;
 }
 
 @layer base {
-  html { scroll-behavior: smooth; }
-
   body {
-    background-color: var(--bg-dark);
-    color: var(--text-white);
-    font-family: var(--font-lato);
+    background-color: #ffffff;
+    color: #1a1a1a;
+    font-family: var(--font-inter);
+    font-size: 1.0625rem;
+    line-height: 1.7;
     overflow-x: hidden;
   }
 
   h1,h2,h3,h4,h5,h6 {
-    font-family: var(--font-cinzel);
-    line-height: 1.25;
-    letter-spacing: 0.03em;
+    font-family: var(--font-inter);
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    color: #1a1a1a;
+  }
+
+  p, li {
+    color: #333333;
+  }
+
+  ol, ul {
+    font-size: 1.0625rem;
   }
 }
 
 @layer components {
-  /* ── BUTTONS ── */
   .btn-primary {
     @apply inline-flex items-center gap-2 px-6 py-3 rounded-lg font-semibold
            text-sm tracking-wide cursor-pointer
-           bg-gradient-to-r from-[#A07C10] via-[#D4AF37] to-[#F5D76E]
-           text-[#0A0A0F] shadow-lg;
-    font-family: var(--font-cinzel);
-    box-shadow: 0 4px 20px rgba(212,175,55,0.35);
-    transition: box-shadow 0.3s ease, transform 0.3s ease;
-    will-change: transform;
+           bg-[#1a1a1a] text-white;
+    font-family: var(--font-inter);
+    box-shadow: none;
+    transition: background 0.2s ease;
   }
   .btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 30px rgba(212,175,55,0.5);
+    background: #333333;
   }
 
   .btn-outline {
     @apply inline-flex items-center gap-2 px-6 py-3 rounded-lg font-semibold
            text-sm tracking-wide cursor-pointer
-           bg-transparent border border-[#D4AF37] text-[#D4AF37];
-    font-family: var(--font-cinzel);
+           bg-transparent border border-[#1a1a1a] text-[#1a1a1a];
+    font-family: var(--font-inter);
     transition: background 0.2s ease, color 0.2s ease;
   }
   .btn-outline:hover {
-    background: rgba(212,175,55,0.1);
-    color: #F5D76E;
+    background: rgba(0,0,0,0.04);
+    color: #111111;
   }
 
-  /* ── CARDS ── */
-  .casino-card {
-    @apply relative overflow-hidden rounded-2xl border;
-    background: var(--bg-card);
-    border-color: var(--border);
-    transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
-    will-change: transform;
-  }
-  .casino-card::before {
-    content: '';
-    @apply absolute top-0 left-0 right-0 h-0.5;
-    background: linear-gradient(90deg, transparent, var(--gold), transparent);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-  .casino-card:hover {
-    transform: translateY(-6px);
-    border-color: rgba(212,175,55,0.5);
-    box-shadow: var(--shadow-gold);
-  }
-  .casino-card:hover::before { opacity: 1; }
-
-  /* ── SECTION LABEL ── */
-  .section-label {
-    @apply inline-block text-xs font-bold tracking-[0.2em] uppercase
-           px-4 py-1.5 rounded-full border mb-4;
-    color: var(--gold-dark);
-    border-color: var(--border);
-    font-family: var(--font-lato);
-  }
-
-  /* ── GOLD DIVIDER ── */
   .gold-divider {
-    @apply w-20 h-0.5 mx-auto mt-3 rounded;
-    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    @apply w-12 h-px mx-auto mt-2 mb-0;
+    background: rgba(0,0,0,0.15);
   }
 
-  /* ── BADGE ── */
-  .badge-gold {
-    @apply inline-block px-3 py-0.5 rounded-full text-xs font-bold tracking-wide border;
-    background: rgba(212,175,55,0.15);
-    color: var(--gold);
-    border-color: rgba(212,175,55,0.3);
-  }
-  .badge-green {
-    @apply inline-block px-3 py-0.5 rounded-full text-xs font-bold border;
-    background: rgba(39,174,96,0.15);
-    color: #2ECC71;
-    border-color: rgba(39,174,96,0.3);
-  }
-  .badge-red {
-    @apply inline-block px-3 py-0.5 rounded-full text-xs font-bold border;
-    background: rgba(139,0,0,0.2);
-    color: #E74C3C;
-    border-color: rgba(192,57,43,0.4);
-  }
-
-  /* ── PAGE HERO ── */
   .page-hero {
-    @apply text-center border-b;
-    padding: 6rem 0 3rem;
-    background: radial-gradient(ellipse at 50% 0%, rgba(212,175,55,0.08) 0%, transparent 60%),
-                linear-gradient(180deg,#0F0F18,#0A0A0F);
-    border-color: var(--border);
+    @apply text-center;
+    padding: 5.5rem 0 2rem;
+    background: #ffffff;
   }
+}
 
-  /* ── FAQ ── */
-  .faq-answer {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.4s ease, padding 0.3s ease;
-  }
-  .faq-answer.open { max-height: 500px; }
-
-  /* ── BELOW FOLD SECTIONS ── */
-  .section-lazy {
-    content-visibility: auto;
-    contain-intrinsic-size: 0 500px;
-  }
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+.sr-only:focus {
+  position: fixed;
+  top: 0.5rem;
+  left: 0.5rem;
+  z-index: 100;
+  width: auto;
+  height: auto;
+  margin: 0;
+  padding: 0.5rem 1rem;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  background: #ffffff;
+  color: #1a1a1a;
+  border: 1px solid #000000;
 }

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { buildMetadata, breadcrumbSchema } from "@/lib/seo";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import styles from "@/styles/prose.module.css";
 
@@ -8,29 +9,26 @@ export const revalidate = 86400;
 
 export const metadata: Metadata = {
   ...buildMetadata({
-    title:       "Terms & Conditions – ZC777 Game Guides Website Pakistan",
-    description: "Read the Terms & Conditions of our ZC777 Game information website. Learn about usage rules, limitations, user responsibilities, and legal guidelines.",
-    keywords:    "ZC777 Terms and Conditions, ZC777 website terms, ZC777 usage policy Pakistan",
+    title:       "Terms & Conditions – ZC777 Game Pakistan",
+    description: "Terms for using the ZC777 Game information website in Pakistan, including usage rules and responsibilities.",
+    keywords:    "ZC777 Terms and Conditions, ZC777 website terms Pakistan",
     path:        "/terms",
+    noIndex:     true,
   }),
-  robots: { index: false, follow: false },
 };
 
 export default function TermsPage() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema([
+      <JsonLd data={breadcrumbSchema([
           { name: "Home", url: "/" },
           { name: "Terms & Conditions", url: "/terms" },
-        ])) }}
-      />
+        ]) as Record<string, unknown>} />
 
       <section className="page-hero" aria-labelledby="terms-h1">
         <div className="max-w-3xl mx-auto px-6">
           <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Terms & Conditions" }]} />
-          <h1 id="terms-h1" className="text-3xl md:text-4xl font-bold mb-4" style={{ fontFamily: "var(--font-cinzel)", color: "#D4AF37" }}>
+          <h1 id="terms-h1" className="text-3xl md:text-4xl font-bold mb-4" style={{ fontFamily: "var(--font-cinzel)", color: "#1a1a1a" }}>
             Terms &amp; Conditions – ZC777 Game Information Website
           </h1>
           <p className="text-base leading-relaxed" style={{ color: "var(--text-muted)" }}>
@@ -39,7 +37,7 @@ export default function TermsPage() {
         </div>
       </section>
 
-      <section className="py-16">
+      <section className="py-8">
         <div className={`max-w-3xl mx-auto px-6 ${styles.prose}`}>
 
           <h2>Acceptance of Terms</h2>
@@ -95,7 +93,7 @@ export default function TermsPage() {
             <li>We are not responsible for any losses or damages</li>
             <li>Users act at their own risk</li>
           </ul>
-          <p><strong style={{ color: "#F0EAD6" }}>Important:</strong> Decisions related to gameplay, transactions, or downloads are the user&apos;s responsibility.</p>
+          <p><strong style={{ color: "#333333" }}>Important:</strong> Decisions related to gameplay, transactions, or downloads are the user&apos;s responsibility.</p>
 
           <h2>Third-Party Links</h2>
           <p>Our website may include links to external websites for additional information.</p>
@@ -131,7 +129,7 @@ export default function TermsPage() {
           </ul>
 
           <h2>Changes to Terms &amp; Conditions</h2>
-          <p>We may update these <strong style={{ color: "#F0EAD6" }}>ZC777 Terms and Conditions</strong> at any time.</p>
+          <p>We may update these <strong style={{ color: "#333333" }}>ZC777 Terms and Conditions</strong> at any time.</p>
           <ul>
             <li>Updates will be posted on this page</li>
             <li>Continued use of the website means acceptance of changes</li>

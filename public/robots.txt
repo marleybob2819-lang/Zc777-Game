@@ -29,20 +29,21 @@ User-agent: *
 Allow: /
 Disallow: /api/
 Disallow: /admin/
-Disallow: /_next/
+
+# Next.js static assets required for rendering
+Allow: /_next/static/
 
 # Priority pages
 Allow: /blog/download-zc777-apk
-Allow: /blog/zc777-game-for-pc
 Allow: /blog/zc777-deposit-and-withdrawal
+Allow: /blog/zc777-game-for-pc
+Allow: /blog/zc777-latest-version-2026
+Allow: /about
+Allow: /blog
 Allow: /blog/top-zc777-games
 Allow: /blog/zc777-game-tips
 Allow: /blog/zc777-account-registration
 Allow: /blog/zc777-game-safety-in-pakistan
-Allow: /blog/zc777-latest-version-2026
-Allow: /blog/zc777-game-about-us
-Allow: /about
-Allow: /blog
 
 # Standard pages
 Allow: /contact
@@ -53,12 +54,16 @@ Allow: /terms
 # AI BOT RESTRICTIONS (Training Prevention)
 # ============================================
 
-# OpenAI GPTBot - Block training, but allow via main rule for answers
+# OpenAI GPTBot - Block training
 User-agent: GPTBot
 Disallow: /
 
 # Anthropic ClaudeBot - Block training
 User-agent: ClaudeBot
+Disallow: /
+
+# Anthropic (legacy agent name)
+User-agent: anthropic-ai
 Disallow: /
 
 # Google Extended (AI Training) - Block training

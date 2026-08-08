@@ -1,4 +1,4 @@
-import type { Config } from "tailwindcss";
+﻿import type { Config } from "tailwindcss";
 
 const config: Config = {
   content: [
@@ -9,32 +9,19 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        gold:        "#D4AF37",
-        "gold-light":"#F5D76E",
-        "gold-dark": "#A07C10",
+        gold:        "#1a1a1a",
+        "gold-light":"#404040",
+        "gold-dark": "#111111",
         crimson:     "#8B0000",
-        "bg-dark":   "#0A0A0F",
-        "bg-card":   "#12121A",
-        "bg-mid":    "#1A1A28",
-        "bg-section":"#0F0F18",
+        "bg-dark":   "#ffffff",
+        "bg-card":   "#ffffff",
+        "bg-mid":    "#f5f5f5",
+        "bg-section":"#fafafa",
       },
       fontFamily: {
-        cinzel: ["var(--font-cinzel)", "serif"],
-        lato:   ["var(--font-lato)",   "sans-serif"],
-      },
-      animation: {
-        "fade-up":  "fadeUp 0.6s ease forwards",
-        shimmer:    "shimmer 2s linear infinite",
-      },
-      keyframes: {
-        fadeUp: {
-          "0%":   { opacity: "0", transform: "translateY(20px)" },
-          "100%": { opacity: "1", transform: "translateY(0)" },
-        },
-        shimmer: {
-          "0%":   { backgroundPosition: "-200% center" },
-          "100%": { backgroundPosition:  "200% center" },
-        },
+        sans:   ["var(--font-inter)", "system-ui", "sans-serif"],
+        cinzel: ["var(--font-inter)", "system-ui", "sans-serif"],
+        lato:   ["var(--font-inter)", "system-ui", "sans-serif"],
       },
     },
   },

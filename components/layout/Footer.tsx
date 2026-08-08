@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 const importantLinks = [
-  { label: "About Us",       href: "/blog/zc777-game-about-us" },
+  { label: "About Us",       href: "/about"   },
   { label: "Contact Us",     href: "/contact" },
   { label: "Privacy Policy", href: "/privacy" },
   { label: "Disclaimer",     href: "/terms"   },
@@ -17,10 +17,9 @@ const importantPages = [
 
 export function Footer() {
   return (
-    <footer className="border-t" style={{ background: "#06060A", borderColor: "var(--border)" }} role="contentinfo">
-      <div className="max-w-6xl mx-auto px-6 pt-14 pb-0">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-10 border-b" style={{ borderColor: "var(--border)" }}>
-          {/* Brand */}
+    <footer className="border-t" style={{ background: "#ffffff", borderColor: "var(--border)" }} role="contentinfo">
+      <div className="max-w-6xl mx-auto px-6 pt-8 pb-0">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 pb-10 border-b" style={{ borderColor: "var(--border)" }}>
           <div>
             <Link href="/" className="inline-block mb-4" aria-label="ZC777 Game Home">
               <img
@@ -30,40 +29,37 @@ export function Footer() {
                 width={160}
                 height={40}
                 className="h-10 w-auto object-contain"
-                loading="lazy"
+                decoding="async"
               />
             </Link>
-            <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
-              ZC777 is Pakistan&apos;s premier online card game platform. Play Teen Patti, Rummy, Dragon Tiger and earn real cash via JazzCash &amp; EasyPaisa.
+            <p className="text-base leading-relaxed" style={{ color: "var(--text-muted)" }}>
+              Independent ZC777 Game guides for Pakistan — APK install help, Teen Patti tips, and JazzCash &amp; EasyPaisa payment walkthroughs.
             </p>
           </div>
-          {/* Important Links */}
           <div>
-            <p className="text-xs font-bold tracking-[0.12em] uppercase mb-5 text-left m-0" style={{ color: "#D4AF37", fontFamily: "var(--font-cinzel)" }}>Important Links</p>
+            <p className="text-xs font-bold tracking-[0.12em] uppercase mb-5 text-left m-0" style={{ color: "#1a1a1a", fontFamily: "var(--font-cinzel)" }}>Important Links</p>
             <ul className="space-y-2">
               {importantLinks.map(({ label, href }) => (
                 <li key={label}>
-                  <Link href={href} className="text-sm transition-colors duration-200 hover:text-[#D4AF37]" style={{ color: "var(--text-muted)" }}>→ {label}</Link>
+                  <Link href={href} className="text-base transition-colors duration-200 hover:text-[#1a1a1a]" style={{ color: "var(--text-muted)" }}>{label}</Link>
                 </li>
               ))}
             </ul>
           </div>
-          {/* Important Pages */}
           <div>
-            <p className="text-xs font-bold tracking-[0.12em] uppercase mb-5 text-left m-0" style={{ color: "#D4AF37", fontFamily: "var(--font-cinzel)" }}>Important Pages</p>
+            <p className="text-xs font-bold tracking-[0.12em] uppercase mb-5 text-left m-0" style={{ color: "#1a1a1a", fontFamily: "var(--font-cinzel)" }}>Important Pages</p>
             <ul className="space-y-2">
               {importantPages.map(({ label, href }) => (
                 <li key={label}>
-                  <Link href={href} className="text-sm transition-colors duration-200 hover:text-[#D4AF37]" style={{ color: "var(--text-muted)" }}>{label}</Link>
+                  <Link href={href} className="text-base transition-colors duration-200 hover:text-[#1a1a1a]" style={{ color: "var(--text-muted)" }}>{label}</Link>
                 </li>
               ))}
             </ul>
           </div>
         </div>
-        {/* Bottom */}
         <div className="py-5">
-          <p className="text-xs text-center" style={{ color: "var(--text-muted)" }}>
-            © 2026 ZC777 Game. All rights reserved.
+          <p className="text-sm text-center" style={{ color: "var(--text-muted)" }}>
+            © 2026 ZC777 Game Guides. For information only. 18+ · Play responsibly.
           </p>
         </div>
       </div>

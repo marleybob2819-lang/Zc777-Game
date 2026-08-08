@@ -2,8 +2,7 @@ import type { BlogPost } from "@/types";
 import { BlogCard } from "@/components/sections/BlogCard";
 
 interface Props {
-  posts:      BlogPost[];
-  categories?: string[];
+  posts: BlogPost[];
 }
 
 export function BlogGrid({ posts }: Props) {

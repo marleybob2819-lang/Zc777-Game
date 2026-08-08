@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { buildMetadata, breadcrumbSchema } from "@/lib/seo";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import styles from "@/styles/prose.module.css";
 
@@ -8,29 +9,26 @@ export const revalidate = 86400;
 
 export const metadata: Metadata = {
   ...buildMetadata({
-    title:       "Privacy Policy – ZC777 Game Guides Website Pakistan",
-    description: "Read our Privacy Policy to understand how we collect, use, and protect your data while using our ZC777 Game information website in Pakistan.",
-    keywords:    "ZC777 Privacy Policy, ZC777 data protection, ZC777 website privacy Pakistan",
+    title:       "Privacy Policy – ZC777 Game Pakistan",
+    description: "How ZC777 Game guides website collects, uses, and protects your data for users in Pakistan.",
+    keywords:    "ZC777 Privacy Policy, ZC777 data protection Pakistan",
     path:        "/privacy",
+    noIndex:     true,
   }),
-  robots: { index: false, follow: false },
 };
 
 export default function PrivacyPage() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema([
+      <JsonLd data={breadcrumbSchema([
           { name: "Home", url: "/" },
           { name: "Privacy Policy", url: "/privacy" },
-        ])) }}
-      />
+        ]) as Record<string, unknown>} />
 
       <section className="page-hero" aria-labelledby="privacy-h1">
         <div className="max-w-3xl mx-auto px-6">
           <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Privacy Policy" }]} />
-          <h1 id="privacy-h1" className="text-3xl md:text-4xl font-bold mb-4" style={{ fontFamily: "var(--font-cinzel)", color: "#D4AF37" }}>
+          <h1 id="privacy-h1" className="text-3xl md:text-4xl font-bold mb-4" style={{ fontFamily: "var(--font-cinzel)", color: "#1a1a1a" }}>
             Privacy Policy – ZC777 Game Information Website
           </h1>
           <p className="text-base leading-relaxed" style={{ color: "var(--text-muted)" }}>
@@ -39,7 +37,7 @@ export default function PrivacyPage() {
         </div>
       </section>
 
-      <section className="py-16">
+      <section className="py-8">
         <div className={`max-w-3xl mx-auto px-6 ${styles.prose}`}>
 
           <p style={{ color: "var(--text-muted)" }}>
@@ -106,7 +104,7 @@ export default function PrivacyPage() {
             <li>Limited data collection</li>
             <li>No storage of sensitive financial information</li>
           </ul>
-          <p><strong style={{ color: "#F0EAD6" }}>Trust Insight:</strong> While we follow best practices, no online platform can guarantee 100% security.</p>
+          <p><strong style={{ color: "#333333" }}>Trust Insight:</strong> While we follow best practices, no online platform can guarantee 100% security.</p>
 
           <h2>Links to External Websites</h2>
           <p>Our website may contain links to external websites related to ZC777 Game. We are not responsible for the privacy practices of those external sites. Users should review their policies separately.</p>
@@ -148,7 +146,7 @@ export default function PrivacyPage() {
 
           <h2>Conclusion</h2>
           <p>
-            Your privacy is important to us, and we are committed to handling your data responsibly. This <strong style={{ color: "#F0EAD6" }}>ZC777 Privacy Policy</strong> ensures transparency and helps you understand how your information is used.
+            Your privacy is important to us, and we are committed to handling your data responsibly. This <strong style={{ color: "#333333" }}>ZC777 Privacy Policy</strong> ensures transparency and helps you understand how your information is used.
           </p>
           <p>By using our website, you agree to the terms outlined in this policy.</p>
 

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? "https://www.zc777apk.com.pk";
+const SITE_NAME = "ZC777 Game";
 
 interface SEOProps {
   title:       string;
@@ -12,6 +13,16 @@ interface SEOProps {
   datePublished?: string;
   dateModified?:  string;
   author?:     string;
+  noIndex?:    boolean;
+}
+
+/** Keep SERP titles ~50–60 chars and descriptions ~150–160 chars. */
+export function clipForSerp(text: string, max: number): string {
+  const clean = text.replace(/\s+/g, " ").trim();
+  if (clean.length <= max) return clean;
+  const sliced = clean.slice(0, max - 1);
+  const lastSpace = sliced.lastIndexOf(" ");
+  return `${(lastSpace > 40 ? sliced.slice(0, lastSpace) : sliced).trimEnd()}…`;
 }
 
 export function buildMetadata({
@@ -20,44 +31,62 @@ export function buildMetadata({
   keywords,
   path = "/",
   type = "website",
-  image = "/images/og-default.jpg",
+  image = "/images/ZC777-GAME-APK.webp",
   datePublished,
   dateModified,
   author,
+  noIndex = false,
 }: SEOProps): Metadata {
-  const url      = `${BASE_URL}${path}`;
-  const imageUrl = `${BASE_URL}${image}`;
+  const url      = `${BASE_URL}${path === "/" ? "" : path}`;
+  const imageUrl = image.startsWith("http") ? image : `${BASE_URL}${image}`;
+  const serpTitle = clipForSerp(title, 60);
+  const serpDesc  = clipForSerp(description, 160);
 
   return {
-    title,
-    description,
+    metadataBase: new URL(BASE_URL),
+    title: { absolute: serpTitle },
+    description: serpDesc,
     keywords,
-    authors: author ? [{ name: author }] : [{ name: "ZC777 Casino" }],
-    robots: { index: true, follow: true, googleBot: { index: true, follow: true, "max-snippet": -1, "max-image-preview": "large" } },
+    authors: author ? [{ name: author }] : [{ name: SITE_NAME }],
+    creator: SITE_NAME,
+    publisher: SITE_NAME,
+    category: "Games",
+    robots: noIndex
+      ? { index: false, follow: false }
+      : {
+          index: true,
+          follow: true,
+          googleBot: {
+            index: true,
+            follow: true,
+            "max-snippet": -1,
+            "max-image-preview": "large",
+            "max-video-preview": -1,
+          },
+        },
     alternates: { canonical: url },
     openGraph: {
       type,
       url,
-      title,
-      description,
-      siteName: "ZC777 Casino",
+      title: serpTitle,
+      description: serpDesc,
+      siteName: SITE_NAME,
       locale: "en_PK",
-      images: [{ url: imageUrl, width: 1200, height: 630 }],
+      images: [{ url: imageUrl, alt: serpTitle }],
       ...(datePublished && { publishedTime: datePublished }),
       ...(dateModified  && { modifiedTime:  dateModified  }),
       ...(author        && { authors:        [author]      }),
     },
     twitter: {
       card: "summary_large_image",
-      title,
-      description,
+      title: serpTitle,
+      description: serpDesc,
       images: [imageUrl],
     },
     other: {
       "geo.region":    "PK",
       "geo.placename": "Pakistan",
-      language:        "English",
-      "revisit-after": "7 days",
+      "content-language": "en",
     },
   };
 }
@@ -69,14 +98,11 @@ export function websiteSchema() {
     "@type": "WebSite",
     "@id": `${BASE_URL}/#website`,
     url: `${BASE_URL}/`,
-    name: "ZC777 Casino",
-    description: "Pakistan's premier online casino gaming platform with 500+ games",
+    name: SITE_NAME,
+    alternateName: ["ZC777", "ZC777 APK", "ZC777 Game APK"],
+    description: "Download ZC777 Game APK for Android in Pakistan. Play Teen Patti, Rummy and real money card games with JazzCash & EasyPaisa.",
+    inLanguage: "en",
     publisher: { "@id": `${BASE_URL}/#organization` },
-    potentialAction: {
-      "@type": "SearchAction",
-      target: `${BASE_URL}/search?q={search_term_string}`,
-      "query-input": "required name=search_term_string",
-    },
   };
 }
 
@@ -85,21 +111,24 @@ export function organizationSchema() {
     "@context": "https://schema.org",
     "@type": "Organization",
     "@id": `${BASE_URL}/#organization`,
-    name: "ZC777 Casino",
+    name: SITE_NAME,
     url: `${BASE_URL}/`,
     foundingDate: "2019",
-    description: "ZC777 Casino is Pakistan's most trusted online casino platform offering 500+ games including slots, poker, roulette, and live dealer games.",
+    description: "ZC777 Game APK download guides, Teen Patti tips, and payment help for players in Pakistan.",
     logo: {
       "@type": "ImageObject",
-      url: `${BASE_URL}/images/og-default.jpg`,
-      width: 1200,
-      height: 630,
+      url: `${BASE_URL}/images/ZC777-GAME-APK.webp`,
+      width: 160,
+      height: 40,
     },
-    areaServed: ["PK", "BD", "IN", "LK"],
+    image: `${BASE_URL}/images/ZC777-GAME-APK.webp`,
+    areaServed: { "@type": "Country", name: "Pakistan" },
     contactPoint: {
       "@type": "ContactPoint",
       contactType: "customer support",
-      availableLanguage: ["English", "Urdu"],
+      email: "support@zc777casino.com",
+      availableLanguage: ["English"],
+      areaServed: "PK",
     },
   };
 }
@@ -109,14 +138,22 @@ export function softwareApplicationSchema(downloadUrl?: string) {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
     name: "ZC777 Game",
+    alternateName: "ZC777 Game APK",
     operatingSystem: "Android",
     applicationCategory: "GameApplication",
+    applicationSubCategory: "Card Game",
+    countriesSupported: "PK",
+    inLanguage: "en",
     ...(downloadUrl && downloadUrl !== "#download" && { downloadUrl }),
-    offers: { "@type": "Offer", price: "0", priceCurrency: "PKR" },
-    aggregateRating: { "@type": "AggregateRating", ratingValue: "4.8", reviewCount: "200000" },
+    offers: {
+      "@type": "Offer",
+      price: "0",
+      priceCurrency: "PKR",
+      availability: "https://schema.org/InStock",
+    },
     softwareVersion: "V1.230",
     fileSize: "49MB",
-    description: "Pakistan's premier online card game platform — play Teen Patti, Rummy, Dragon vs Tiger and win real money via JazzCash & EasyPaisa.",
+    description: "Free ZC777 Game APK for Android in Pakistan. Play Teen Patti, Rummy and more. Withdraw via JazzCash & EasyPaisa.",
   };
 }
 
@@ -133,22 +170,38 @@ export function faqSchema(faqs: { question: string; answer: string }[]) {
 }
 
 export function blogPostSchema({
-  title, description, datePublished, dateModified, author, authorTitle, slug,
+  title, description, datePublished, dateModified, author, authorTitle, slug, image,
 }: {
   title: string; description: string; datePublished: string;
   dateModified: string; author: string; authorTitle: string; slug: string;
+  image?: string;
 }) {
+  const imageUrl = image
+    ? (image.startsWith("http") ? image : `${BASE_URL}${image}`)
+    : `${BASE_URL}/images/ZC777-GAME-APK.webp`;
+
   return {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    headline: title,
+    headline: clipForSerp(title, 110),
     url: `${BASE_URL}/blog/${slug}`,
+    mainEntityOfPage: `${BASE_URL}/blog/${slug}`,
     datePublished,
     dateModified,
-    author: { "@type": "Person", name: author, jobTitle: authorTitle, worksFor: { "@type": "Organization", name: "ZC777 Casino" } },
+    author: {
+      "@type": "Person",
+      name: author,
+      jobTitle: authorTitle,
+      worksFor: { "@id": `${BASE_URL}/#organization` },
+    },
     publisher: { "@id": `${BASE_URL}/#organization` },
-    description,
+    description: clipForSerp(description, 160),
+    image: {
+      "@type": "ImageObject",
+      url: imageUrl,
+    },
     inLanguage: "en",
+    isPartOf: { "@id": `${BASE_URL}/#website` },
   };
 }
 
@@ -160,9 +213,9 @@ export function breadcrumbSchema(items: { name: string; url: string }[]) {
       "@type": "ListItem",
       position: i + 1,
       name: item.name,
-      item: `${BASE_URL}${item.url}`,
+      item: item.url.startsWith("http") ? item.url : `${BASE_URL}${item.url}`,
     })),
   };
 }
 
-export { BASE_URL };
+export { BASE_URL, SITE_NAME };

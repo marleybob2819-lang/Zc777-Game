@@ -1,10 +1,10 @@
-.prose h2 { color: #D4AF37; font-size: 1.5rem; margin-top: 2.5rem; margin-bottom: 0.75rem; }
-.prose h3 { color: #FFFFFF; font-size: 1.25rem; margin-top: 2rem; margin-bottom: 0.5rem; }
-.prose h4 { color: #F5D76E; font-size: 1rem; margin-top: 1.5rem; margin-bottom: 0.25rem; }
-.prose p  { color: #FFFFFF; line-height: 1.75; margin-bottom: 1rem; }
-.prose ul { padding-left: 1.25rem; margin-bottom: 1rem; list-style: disc; color: #FFFFFF; }
-.prose ol { padding-left: 1.25rem; margin-bottom: 1rem; list-style: decimal; color: #FFFFFF; }
-.prose ul li, .prose ol li { margin-bottom: 0.5rem; }
-.prose strong { color: #FFFFFF; }
-.prose a { color: #D4AF37; text-underline-offset: 2px; }
-.prose a:hover { color: #F5D76E; }
+.prose h2 { color: #1a1a1a; font-size: 1.5rem; margin-top: 2rem; margin-bottom: 0.75rem; }
+.prose h3 { color: #1a1a1a; font-size: 1.25rem; margin-top: 1.75rem; margin-bottom: 0.5rem; }
+.prose h4 { color: #1a1a1a; font-size: 1.1rem; margin-top: 1.5rem; margin-bottom: 0.25rem; }
+.prose p  { color: #333333; font-size: 1.0625rem; line-height: 1.75; margin-bottom: 1rem; }
+.prose ul { padding-left: 1.25rem; margin-bottom: 1rem; list-style: disc; color: #333333; font-size: 1.0625rem; }
+.prose ol { padding-left: 1.25rem; margin-bottom: 1rem; list-style: decimal; color: #333333; font-size: 1.0625rem; }
+.prose ul li, .prose ol li { margin-bottom: 0.5rem; line-height: 1.7; }
+.prose strong { color: #1a1a1a; }
+.prose a { color: #1a1a1a; text-underline-offset: 2px; }
+.prose a:hover { color: #111111; }

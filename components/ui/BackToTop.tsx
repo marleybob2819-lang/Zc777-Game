@@ -6,16 +6,19 @@ export function BackToTop() {
 
   useEffect(() => {
     const onScroll = () => setVisible(window.scrollY > 400);
+    onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  if (!visible) return null;
 
   return (
     <button
       aria-label="Back to top"
       onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-      className={`fixed bottom-8 right-8 z-50 w-11 h-11 rounded-full flex items-center justify-center text-lg font-bold shadow-lg transition-all duration-300 ${visible ? "opacity-100 pointer-events-auto translate-y-0" : "opacity-0 pointer-events-none translate-y-4"}`}
-      style={{ background: "#D4AF37", color: "#0A0A0F", fontFamily: "var(--font-cinzel)" }}
+      className="fixed bottom-8 right-8 z-50 w-11 h-11 rounded-full flex items-center justify-center text-lg font-bold shadow-lg"
+      style={{ background: "#1a1a1a", color: "#ffffff", fontFamily: "var(--font-cinzel)" }}
     >
       ↑
     </button>

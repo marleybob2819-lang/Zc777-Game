@@ -9,8 +9,8 @@ export function Breadcrumb({ items }: { items: Crumb[] }) {
         <span key={i} className="flex items-center gap-2">
           {i > 0 && <span aria-hidden="true" style={{ color: "var(--text-muted)" }}>›</span>}
           {item.href
-            ? <Link href={item.href} className="hover:text-[#D4AF37] transition-colors">{item.label}</Link>
-            : <span style={{ color: "#D4AF37" }} aria-current="page">{item.label}</span>
+            ? <Link href={item.href} className="hover:text-[#1a1a1a] transition-colors">{item.label}</Link>
+            : <span style={{ color: "#1a1a1a" }} aria-current="page">{item.label}</span>
           }
         </span>
       ))}
