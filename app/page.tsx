@@ -143,8 +143,8 @@ export default function HomePage() {
             <div>
               <h2 id="overview-heading" className="text-3xl font-bold mt-2 mb-5" style={{ fontFamily:"var(--font-cinzel)",color:"#1a1a1a" }}>What is ZC777 Game?</h2>
 
-              <p style={{ color:"var(--text-muted)" }}>ZC777 Game is Pakistan&apos;s most popular online card game platform that combines classic card games like <strong className="text-neutral-900">Teen Patti</strong> and <strong className="text-neutral-900">Rummy</strong> with modern gaming technology. When people search for &quot;ZC777 Game&quot;, they&apos;re looking for a trusted platform to play card games and earn real money — and ZC777 delivers exactly that.</p>
-              <p style={{ color:"var(--text-muted)" }}>It has become the go-to platform for card game enthusiasts in Pakistan who want beautiful design, simple settings, classic themes, and easy gameplay. You can <a href="#payment" className="underline underline-offset-2" style={{ color:"#1a1a1a" }}>withdraw winnings or deposit money</a> anytime using <strong className="text-neutral-900">JazzCash</strong> and <strong className="text-neutral-900">EasyPaisa</strong>.</p>
+              <p style={{ color:"var(--text-muted)" }}><Link href="/" className="underline underline-offset-2" style={{ color:"#1a1a1a" }}>ZC777 Game</Link> is Pakistan&apos;s most popular online card game platform that combines classic card games like <strong className="text-neutral-900">Teen Patti</strong> and <strong className="text-neutral-900">Rummy</strong> with modern gaming technology. When people search for &quot;ZC777 Game&quot;, they&apos;re looking for a trusted platform to play card games and earn real money — and ZC777 delivers exactly that.</p>
+              <p style={{ color:"var(--text-muted)" }}>It has become the go-to platform for card game enthusiasts in Pakistan who want beautiful design, simple settings, classic themes, and easy gameplay. You can withdraw winnings or deposit money anytime using <strong className="text-neutral-900">JazzCash</strong> and <strong className="text-neutral-900">EasyPaisa</strong>.</p>
             </div>
             <div>
               <h3 className="text-2xl font-bold mt-2 mb-5" style={{ fontFamily:"var(--font-cinzel)",color:"#1a1a1a" }}>Why is ZC777 Game So Popular?</h3>
@@ -260,15 +260,8 @@ export default function HomePage() {
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-6"><h2 id="dl-heading" className="text-3xl font-bold" style={{ fontFamily:"var(--font-cinzel)",color:"#1a1a1a" }}>Download &amp; Install ZC777 Game APK</h2><div className="gold-divider" /></div>
           <div className="max-w-3xl mx-auto">
-            <p className="text-lg leading-relaxed mb-4" style={{ color:"#333333" }}>
-              Get the latest Android APK from a trusted source, allow install from unknown apps, then open the file from Downloads to install.
-            </p>
-            <p className="text-base m-0" style={{ color:"var(--text-muted)" }}>
-              Full install walkthrough:{" "}
-              <Link href="/blog/download-zc777-apk" className="underline underline-offset-2" style={{ color:"#1a1a1a" }}>Download ZC777 APK guide</Link>.
-              {" "}Check{" "}
-              <a href="#sysreq-heading" className="underline underline-offset-2" style={{ color:"#1a1a1a" }}>system requirements</a>
-              {" "}before you install.
+            <p className="text-lg leading-relaxed mb-4 m-0" style={{ color:"#333333" }}>
+              Get the latest Android APK from a trusted source, allow install from unknown apps, then open the file from Downloads to install. Check the system requirements below before you install.
             </p>
           </div>
         </div>
@@ -305,12 +298,8 @@ export default function HomePage() {
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-6"><h2 id="payment-heading" className="text-3xl font-bold" style={{ fontFamily:"var(--font-cinzel)",color:"#1a1a1a" }}>Deposit &amp; Withdraw with JazzCash / EasyPaisa</h2><div className="gold-divider" /></div>
           <div className="max-w-3xl mx-auto">
-            <p className="text-lg leading-relaxed mb-4" style={{ color:"#333333" }}>
+            <p className="text-lg leading-relaxed mb-4 m-0" style={{ color:"#333333" }}>
               Use the in-app Wallet to deposit chips or withdraw winnings via JazzCash or EasyPaisa. Always double-check account details before confirming.
-            </p>
-            <p className="text-base m-0" style={{ color:"var(--text-muted)" }}>
-              Limits, methods, and troubleshooting:{" "}
-              <Link href="/blog/zc777-deposit-and-withdrawal" className="underline underline-offset-2" style={{ color:"#1a1a1a" }}>Deposit &amp; withdrawal guide</Link>.
             </p>
           </div>
         </div>
@@ -416,7 +405,7 @@ export default function HomePage() {
         <div className="max-w-6xl mx-auto px-6">
           <h2 className="text-3xl font-bold mb-4 m-0" style={{ fontFamily:"var(--font-cinzel)",color:"#1a1a1a" }}>Conclusion</h2>
           <p className="max-w-3xl mx-auto mb-4" style={{ color:"var(--text-muted)" }}>ZC777 Game is one of the most popular online card games in Pakistan. It provides fun, entertainment, and a great chance to earn money if you play wisely. The deposit and withdrawal system through JazzCash or EasyPaisa is very convenient. Play responsibly, use smart strategies, and focus on skill rather than luck for the best experience.</p>
-          <p className="max-w-3xl mx-auto m-0" style={{ color:"var(--text-muted)" }}>Learn more about our platform on the <Link href="/about" className="underline underline-offset-2" style={{ color:"#1a1a1a" }}>About Us</Link> page.</p>
+          <p className="max-w-3xl mx-auto m-0" style={{ color:"var(--text-muted)" }}>Learn more about our platform on the <Link href="/about" className="underline underline-offset-2" style={{ color:"#1a1a1a" }}>About</Link> page.</p>
         </div>
       </section>
     </>

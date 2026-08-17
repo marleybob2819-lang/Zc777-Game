@@ -180,35 +180,14 @@ export default function BlogPostPage({ params }: Props) {
           {/* Content */}
           <div className={styles.prose} itemProp="articleBody">
             {post.content ? renderContent(post.content) : <p>Content coming soon.</p>}
+            <p>
+              Visit the{" "}
+              <Link href="/" className="underline underline-offset-2" style={{ color: "#1a1a1a" }}>
+                ZC777 Game
+              </Link>{" "}
+              homepage for APK download, payments, and full game details.
+            </p>
           </div>
-
-          {/* Related Articles */}
-          {(() => {
-            const related = blogPosts
-              .filter((p) => p.slug !== post.slug && p.slug !== "zc777-game-about-us" && p.category === post.category)
-              .slice(0, 2);
-            const fallback = related.length < 2
-              ? blogPosts.filter((p) => p.slug !== post.slug && p.slug !== "zc777-game-about-us" && !related.includes(p)).slice(0, 2 - related.length)
-              : [];
-            const shown = [...related, ...fallback];
-            if (shown.length === 0) return null;
-            return (
-              <section className="mt-16" aria-labelledby="related-heading">
-                <h2 id="related-heading" className="text-2xl font-bold mb-6" style={{ fontFamily: "var(--font-cinzel)", color: "#1a1a1a" }}>
-                  Related Articles
-                </h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  {shown.map((rp) => (
-                    <Link key={rp.slug} href={`/blog/${rp.slug}`} className="block hover:no-underline group">
-                      <div className="text-xs uppercase tracking-widest mb-2" style={{ color: "#1a1a1a" }}>{rp.category}</div>
-                      <div className="text-sm font-bold leading-snug mb-2 group-hover:text-[#1a1a1a] transition-colors" style={{ color: "#333333" }}>{rp.title}</div>
-                      <div className="text-xs" style={{ color: "var(--text-muted)" }}>{rp.readTime} · {rp.date}</div>
-                    </Link>
-                  ))}
-                </div>
-              </section>
-            );
-          })()}
 
 
         </div>
