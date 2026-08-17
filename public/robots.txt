@@ -131,6 +131,7 @@ Allow: /
 # ============================================
 
 Sitemap: https://www.zc777apk.com.pk/sitemap.xml
+Sitemap: https://www.zc777apk.com.pk/sitemap-image.xml
 
 # ============================================
 # IMPORTANT: DO NOT ADD Host DIRECTIVE

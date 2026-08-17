@@ -52,6 +52,15 @@ const nextConfig = {
         ],
       },
       {
+        source: "/sitemap-image.xml",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, s-maxage=86400, stale-while-revalidate=86400",
+          },
+        ],
+      },
+      {
         source: "/robots.txt",
         headers: [
           {
